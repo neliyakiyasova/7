@@ -12,12 +12,12 @@ createRoot(document.getElementById('root')).render(
 if ('serviceWorker' in navigator) { 
   window.addEventListener('load', () => {
     navigator.serviceWorker 
-      .register('/sw.js') 
-      .then((reg) => {
-        console.log('Service Worker зарегистрирован', reg); 
-      })
-      .catch((err) => {
-        console.error('Ошибка регистрации Service Worker:', err);
-      }); 
+    .register('/custom-sw.js') 
+    .then((registration) => {
+      console.log('SW зарегистрирован:', registration); 
+    })
+    .catch((error) => {
+      console.error('Ошибка регистрации SW:', error);
+    }); 
   });
 }

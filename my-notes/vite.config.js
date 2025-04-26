@@ -3,10 +3,20 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({ 
+  //добавлено
+  build: {
+    assetsInclude: ['**/*.js'], // Включаем SW в сборку
+  },
+  //конец
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate', 
+      injectRegister: false, // отключаем автоматическую регистрацию
+      workbox: {
+        swSrc: 'custom-sw.js', 
+      },
+    
       manifest: {
         name: 'My Notes', 
         short_name: 'Notes', 
